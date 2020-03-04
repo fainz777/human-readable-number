@@ -38,4 +38,16 @@ module.exports = function toReadable (number) {
     const rest = number % 10;
     return `${readableNumbers[number - rest]} ${readableNumbers[rest]}`;
   }
+
+  if (number < 100000) {
+  	const rest = number % 100;
+  	const hundreds = parseInt(number / 100);
+  	let text = `${readableNumbers[hundreds]} hundred`;
+  	if (rest !== 0) {
+  		text += ` ${toReadable(rest)}`;
+  	}
+  	return text;
+  }
+
+  return '';
 }
